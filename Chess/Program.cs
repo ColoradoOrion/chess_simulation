@@ -4,6 +4,7 @@
 //     Console.SetCursorPosition and
 //     Console.Clear methods.
 using System;
+using ChessLibrary;
 
 class Sample
 {
@@ -33,6 +34,13 @@ class Sample
 
         origRow = Console.CursorTop;
         origCol = Console.CursorLeft;
+
+        for (var c = 0; c < 7; ++c)
+        {
+            var position = new Position("H8");
+
+
+        }
 
         const int ColumnOffset = 10;
         const int RowOffset = 4;
