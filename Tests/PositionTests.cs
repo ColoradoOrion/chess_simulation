@@ -42,6 +42,50 @@ public class PositionTests
     }
 
     [Test]
+    public void CheckHash()
+    {
+        var p1 = new Position("A1");
+        var p2 = new Position("A1");
+
+        Assert.That(p1.GetHashCode(), Is.EqualTo(p2.GetHashCode()));
+    }
+
+    [Test]
+    public void CheckUnequalHash()
+    {
+        var p1 = new Position("A1");
+        var p2 = new Position("B1");
+
+        Assert.That(p1.GetHashCode(), Is.Not.EqualTo(p2.GetHashCode()));
+    }
+
+    [Test]
+    public void AreEqual()
+    {
+        var p1 = new Position("A1");
+        var p2 = new Position("A1");
+
+        Assert.That(p1, Is.EqualTo(p2));
+    }
+
+    [Test]
+    public void AreEqualCaseInsensitive()
+    {
+        var p1 = new Position("A1");
+        var p2 = new Position("a1");
+
+        Assert.That(p1, Is.EqualTo(p2));
+    }
+
+    public void AreNotEqual()
+    {
+        var p1 = new Position("A1");
+        var p2 = new Position("B1");
+
+        Assert.That(p1, Is.Not.EqualTo(p2));
+    }
+
+    [Test]
     public void InvalidColumn()
     {
         var position = new Position("P8");
@@ -50,7 +94,6 @@ public class PositionTests
         Assert.That(position.Row, Is.EqualTo(-1));
         Assert.IsNull(position.ToString());
     }
-
 
     [Test]
     public void InvalidRowLow()

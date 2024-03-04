@@ -35,13 +35,11 @@ class Sample
         origRow = Console.CursorTop;
         origCol = Console.CursorLeft;
 
-        for (var c = 0; c < 7; ++c)
+        foreach (PieceTypes type in Enum.GetValues(typeof(PieceTypes)))
         {
-            var position = new Position("H8");
-
-
+            var piece = PieceFactory.CreatePiece(type, new Position("A1"), PieceColors.Blue);
         }
-
+        
         const int ColumnOffset = 10;
         const int RowOffset = 4;
         for (var row = 0; row < 8; ++row)
