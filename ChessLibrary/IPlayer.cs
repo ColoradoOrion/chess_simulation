@@ -9,5 +9,11 @@ public interface IPlayer
     /// The player takes a turn
     /// </summary>
     /// <returns>An IPiece if one is captured during the turn, null if not</returns>
-    public IPiece? TakeTurn();
+    IPiece? TakeTurn();
+
+    IEnumerable<IPiece> Pieces {
+        get;
+    }
+
+    IPiece? GetPieceByPosition(Position position);
 }

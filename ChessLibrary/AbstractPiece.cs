@@ -3,20 +3,24 @@ namespace ChessLibrary;
 public abstract class AbstractPiece : IPiece
 {
     protected Position _position;
-    protected PieceColors _color;
+    protected ConsoleColor _color;
 
-    public abstract PieceTypes Type { get; }
+    protected bool _hasMoved = false;
 
     protected AbstractPiece()
     {
         _position = new Position(-1, -1);
     }
 
-    protected AbstractPiece(Position position, PieceColors color)
+    protected AbstractPiece(Position position, ConsoleColor color)
     {
         _position = position;
         _color = color;
     }
+
+    public abstract PieceTypes Type { get; }
+
+    public abstract char Icon { get; }
 
     public Position Position
     {
@@ -26,22 +30,24 @@ public abstract class AbstractPiece : IPiece
         }
     }
 
-    public PieceColors Color
+    public ConsoleColor Color
     {
-        get 
+        get
         {
             return _color;
         }
     }
 
+    // TODO: provide opponent pieces
     public abstract IList<Position> GetLegalMoves();
 
-    public static bool IsOnTheBoard(Position position, int columnAdjustment, int rowAdjustment)
-    {
-        return position.Column + columnAdjustment <= Position.MaxDimensionValue
-        && position.Column + columnAdjustment >= Position.MinDimensionValue
-        && position.Row + rowAdjustment <= Position.MaxDimensionValue
-        && position.Row + rowAdjustment >= Position.MinDimensionValue;
 
+    public void Move(Position newPosition)
+    {
+        if (newPosition.IsValid)
+        {
+            _hasMoved = true;
+            _position = newPosition;
+        }
     }
 }

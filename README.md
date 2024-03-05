@@ -2,6 +2,23 @@
 
 This project is a demonstration of using .NET Core to play chess. It's *mostly* accurate. See the Assumptions and Unimplemented Features below. When testing with WSL, it was found that setting the console's background color affected the text color, regardless of what ForegroundColor was used. Blue and Red pieces worked best on Black and White backgrounds. Hence the color scheme.
 
+## Building and Running
+### Prerequisites
+- .Net Core SDK 8
+### Build the project
+Build the project by running the following command
+
+     dotnet build
+
+### Run the unit tests
+You can run the tests by running the following
+
+     dotnet test
+
+To get test coverage, run
+
+    dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=lcov /p:CoverletOutput=./lcov.info
+
 ## Playing the game
 1. Start the game.
 1. Decide whether the first player is a human or computer player.
@@ -31,12 +48,13 @@ That is, the program does't look to see if there are pieces blocking the path of
 - The ability to save the game.
 - The ability to recall a game.
 - Configuration beyond a hard-coded config file.
+- Castling
+- en passant
 
 ## Development TODO
 - Factory to generate pieces
 - render the board
 - determine legal moves
-
 
 ### Structure
 
@@ -87,3 +105,22 @@ That is, the program does't look to see if there are pieces blocking the path of
         Bishop
         Knight
         Pawn
+
+
+## Design Patterns
+- [Iterator](https://en.wikipedia.org/wiki/Iterator_pattern) - Getting pieces
+- [Template](https://en.wikipedia.org/wiki/Template_method_pattern) - Taking a turn
+
+## Learned
+
+### New
+- Top level statements
+- VS Code instead of VS using `dotnet` commands
+- .Net Core vs .Net Framework
+
+### Review
+- triple-slash comments
+- Collections (Dictionary, List)
+- LINQ
+- Initialization techniques
+- Expression body

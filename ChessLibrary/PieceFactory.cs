@@ -2,7 +2,7 @@ namespace ChessLibrary;
 
 public static class PieceFactory
 {
-    public static IPiece? CreatePiece(PieceTypes type, Position position, PieceColors color)
+    public static IPiece? CreatePiece(PieceTypes type, Position position, ConsoleColor color)
     {
         switch (type)
         {

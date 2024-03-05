@@ -1,15 +1,19 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace ChessLibrary;
-/*
-Chess convention has columns A through H running left to right 
-and rows running 1 through 8 from bottom to top.
-
-Internally to this application, we are running rows 0-7 top to bottom
-and columns 0-7 left to right for easier math.
-*/
+/// <summary>
+/// Chess convention has columns A through H running left to right 
+/// and rows running 1 through 8 from bottom to top.
+/// Internally to this application, we are running rows 0-7 top to bottom
+/// and columns 0-7 left to right for easier math.
+/// </summary>
+/// <remarks>
+/// Position is Immutable. We want the piece to get a new position so it can keep track
+/// if it has moved in the past.
+/// </remarks>
 public class Position
 {
     public static readonly int MinDimensionValue = 0;
@@ -24,17 +28,11 @@ public class Position
     private int _row = -1;
     private int _column = -1;
 
-    private readonly string? _stringRepresentation = null;
+    private string? _stringRepresentation = null;
 
     public Position(int column, int row)
     {
-        if (IsColumnRowValid(column, row))
-        {
-            _row = row;
-            _column = column;
-            char character = (char)(_column + Position.CharOffset);
-            _stringRepresentation = $"{character}{row + 1}";
-        }
+        SetPosition(column, row);
     }
 
     public Position(string coordinate)
@@ -49,34 +47,19 @@ public class Position
         }
     }
 
-    public bool IsValid
+    private bool SetPosition(int column, int row)
     {
-        get
+        if (IsPositionValid(column, row))
         {
-            return _column > -1 && _row > -1 && !string.IsNullOrEmpty(_stringRepresentation);
-        }
-    }
+            _row = row;
+            _column = column;
+            char character = (char)(_column + CharOffset);
+            _stringRepresentation = $"{character}{row + 1}";
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(_column, _row);
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (obj is not Position right || obj.GetType() != GetType())
-        {
-            return false;
+            return true;
         }
 
-        return right._column == _column
-        && right._row == _row
-        && right._stringRepresentation == _stringRepresentation;
-    }
-
-    public override string? ToString()
-    {
-        return _stringRepresentation;
+        return false;
     }
 
     public int Row
@@ -95,20 +78,22 @@ public class Position
         }
     }
 
-    /// <summary>
-    /// Generate a new Position based on the current position plus an offset
-    /// </summary>
-    /// <param name="columnOffset"></param>
-    /// <param name="rowOffset"></param>
-    /// <returns>A new position if it's valid. Null if it's not</returns>
-    public Position Move(int columnOffset, int rowOffset)
+    public bool IsValid
     {
-        return new Position(Column + columnOffset, Row + rowOffset);
+        get
+        {
+            return _column > -1 && _row > -1 && !string.IsNullOrEmpty(_stringRepresentation);
+        }
     }
 
-    public static bool IsColumnRowValid(int column, int row)
+    public static bool IsPositionValid(int column, int row)
     {
         return row >= MinDimensionValue && row <= MaxDimensionValue && column >= MinDimensionValue && column <= MaxDimensionValue;
+    }
+
+    public static bool IsPositionValid(Position position)
+    {
+        return IsPositionValid(position.Column, position.Row);
     }
 
     public static (int, int)? ParseCoordinate(string coordinate)
@@ -136,5 +121,39 @@ public class Position
         }
 
         return null;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(_column, _row);
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is Position right && obj.GetType() == GetType())
+        {
+            return right._column == _column
+            && right._row == _row
+            && right._stringRepresentation == _stringRepresentation;
+        }
+
+        return false;
+    }
+
+    public static bool operator ==(Position a, Position b)
+    {
+        // Examples show null checks. Not sure how null would be passed here,
+        // So removing for simplicity
+        return a.Equals(b);
+    }
+
+    public static bool operator !=(Position a, Position b)
+    {
+        return !(a == b);
+    }
+
+    public override string? ToString()
+    {
+        return _stringRepresentation;
     }
 }

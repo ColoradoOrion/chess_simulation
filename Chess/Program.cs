@@ -34,11 +34,6 @@ class Sample
 
         origRow = Console.CursorTop;
         origCol = Console.CursorLeft;
-
-        foreach (PieceTypes type in Enum.GetValues(typeof(PieceTypes)))
-        {
-            var piece = PieceFactory.CreatePiece(type, new Position("A1"), PieceColors.Blue);
-        }
         
         const int ColumnOffset = 10;
         const int RowOffset = 4;
@@ -58,7 +53,7 @@ class Sample
         }
 
         Console.ResetColor();
-        //
+        
         WriteAt("All done!", 0, 8 + 2 + RowOffset);
         Console.WriteLine();
     }

@@ -13,7 +13,7 @@ public class PieceTests
     [Test]
     public void Moves()
     {
-        var legalNext = new List<Position>(){
+        var legalNextMoves = new List<Position>(){
             new("D5"),
             new("E5"),
             new ("E4"),
@@ -25,17 +25,17 @@ public class PieceTests
         };
 
         var start = new Position("D4");
-        var king = PieceFactory.CreatePiece(PieceTypes.King, start, PieceColors.Blue);
+        var king = PieceFactory.CreatePiece(PieceTypes.King, start, ConsoleColor.DarkBlue);
 
         Assert.That(king, Is.Not.Null);
 
         var positions = king.GetLegalMoves();
 
-        CollectionAssert.AreEquivalent(legalNext, positions);
+        CollectionAssert.AreEquivalent(legalNextMoves, positions);
     }
 
     [Test]
-    public void KingTopLeftCorner()
+    public void KingTopRightCorner()
     {
         var legalNext = new List<Position>(){
             new("H7"),
@@ -44,7 +44,26 @@ public class PieceTests
         };
 
         var start = new Position("H8");
-        var king = PieceFactory.CreatePiece(PieceTypes.King, start, PieceColors.Blue);
+        var king = PieceFactory.CreatePiece(PieceTypes.King, start, ConsoleColor.DarkBlue);
+
+        Assert.That(king, Is.Not.Null);
+
+        var positions = king.GetLegalMoves();
+
+        CollectionAssert.AreEquivalent(legalNext, positions);
+    }
+
+        [Test]
+    public void KingBottomLeftCorner()
+    {
+        var legalNext = new List<Position>(){
+            new("B1"),
+            new("B2"),
+            new ("A2")
+        };
+
+        var start = new Position("A1");
+        var king = PieceFactory.CreatePiece(PieceTypes.King, start, ConsoleColor.DarkBlue);
 
         Assert.That(king, Is.Not.Null);
 

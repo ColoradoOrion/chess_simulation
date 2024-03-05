@@ -30,15 +30,32 @@ public class PositionTests
     [Test]
     public void ConstructionFromCoordinate()
     {
-        for (var c = 0; c <= Position.MaxDimensionValue; ++c)
+        for (var rowAndCol = 0; rowAndCol <= Position.MaxDimensionValue; ++rowAndCol)
         {
-            var coordinate = $"{(char)(c + Position.CharOffset)}{c + 1}";
+            var coordinate = $"{(char)(rowAndCol + Position.CharOffset)}{rowAndCol + 1}";
             var position = new Position(coordinate);
-            Assert.IsTrue(position.IsValid, $"{c}: {coordinate} - {position.Column}:{position.Row}");
-            Assert.That(position.Column, Is.EqualTo(c));
-            Assert.That(position.Row, Is.EqualTo(c));
+            Assert.IsTrue(position.IsValid, $"{rowAndCol}: {coordinate} - {position.Column}:{position.Row}");
+            Assert.That(position.Column, Is.EqualTo(rowAndCol));
+            Assert.That(position.Row, Is.EqualTo(rowAndCol));
             Assert.That(position.ToString(), Is.EqualTo(coordinate));
         }
+    }
+
+    [Test]
+    public void ParseCoordinateValid()
+    {
+        var coord = Position.ParseCoordinate("A1");
+        Assert.IsNotNull(coord);
+
+        Assert.That(coord.Value.Item1, Is.EqualTo(0));
+        Assert.That(coord.Value.Item2, Is.EqualTo(0));
+    }
+
+    [Test]
+    public void ParseCoordinateEmpty()
+    {
+        var coord = Position.ParseCoordinate("");
+        Assert.That(coord, Is.Null);
     }
 
     [Test]
@@ -66,6 +83,36 @@ public class PositionTests
         var p2 = new Position("A1");
 
         Assert.That(p1, Is.EqualTo(p2));
+    }
+
+    [Test]
+    public void AreEqualSame()
+    {
+        var p1 = new Position("A1");
+        var p2 = new Position("A1");
+
+        bool test = p1.Equals(p2);
+        Assert.That(test, Is.True);
+    }
+
+    [Test]
+    public void AreEqualOperator()
+    {
+        var p1 = new Position("A1");
+        var p2 = new Position("A1");
+
+        bool test = p1 == p2;
+        Assert.That(test, Is.True);
+    }
+
+    [Test]
+    public void AreNotEqualOperator()
+    {
+        var p1 = new Position("A1");
+        var p2 = new Position("B3");
+
+        bool test = p1 != p2;
+        Assert.That(test, Is.True);
     }
 
     [Test]
@@ -142,7 +189,19 @@ public class PositionTests
         {
             for (var column = Position.MinDimensionValue; column < Position.MaxDimensionValue; ++column)
             {
-                Assert.IsTrue(Position.IsColumnRowValid(column, row));
+                Assert.IsTrue(Position.IsPositionValid(column, row));
+            }
+        }
+    }
+
+    [Test]
+    public void ValidPosition()
+    {
+        for (var row = Position.MinDimensionValue; row < Position.MaxDimensionValue; ++row)
+        {
+            for (var column = Position.MinDimensionValue; column < Position.MaxDimensionValue; ++column)
+            {
+                Assert.IsTrue(Position.IsPositionValid(new Position(column, row)));
             }
         }
     }
@@ -154,7 +213,7 @@ public class PositionTests
         {
             for (var column = Position.MinDimensionValue; column < Position.MaxDimensionValue; ++column)
             {
-                Assert.IsFalse(Position.IsColumnRowValid(column, row));
+                Assert.IsFalse(Position.IsPositionValid(column, row));
             }
         }
 
@@ -162,7 +221,7 @@ public class PositionTests
         {
             for (var column = Position.MinDimensionValue; column < Position.MaxDimensionValue; ++column)
             {
-                Assert.IsFalse(Position.IsColumnRowValid(column, row));
+                Assert.IsFalse(Position.IsPositionValid(column, row));
             }
         }
     }
@@ -174,7 +233,7 @@ public class PositionTests
         {
             for (var column = Position.MinDimensionValue - 100; column < Position.MinDimensionValue - 1; ++column)
             {
-                Assert.IsFalse(Position.IsColumnRowValid(column, row));
+                Assert.IsFalse(Position.IsPositionValid(column, row));
             }
         }
 
@@ -182,7 +241,7 @@ public class PositionTests
         {
             for (var column = Position.MaxDimensionValue + 1; column < Position.MaxDimensionValue + 100; ++column)
             {
-                Assert.IsFalse(Position.IsColumnRowValid(column, row));
+                Assert.IsFalse(Position.IsPositionValid(column, row));
             }
         }
     }

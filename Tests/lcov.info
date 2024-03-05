@@ -1,0 +1,308 @@
+SF:/home/coloradoorion/code/mapleton_hill/ChessRefactor/ChessLibrary/AbstractPiece.cs
+FN:25,ChessLibrary.Position ChessLibrary.AbstractPiece::get_Position()
+FNDA:77,ChessLibrary.Position ChessLibrary.AbstractPiece::get_Position()
+DA:26,77
+DA:27,77
+DA:28,77
+FN:33,System.ConsoleColor ChessLibrary.AbstractPiece::get_Color()
+FNDA:0,System.ConsoleColor ChessLibrary.AbstractPiece::get_Color()
+DA:34,0
+DA:35,0
+DA:36,0
+FN:41,System.Boolean ChessLibrary.AbstractPiece::IsOnTheBoard(ChessLibrary.Position,System.Int32,System.Int32)
+FNDA:0,System.Boolean ChessLibrary.AbstractPiece::IsOnTheBoard(ChessLibrary.Position,System.Int32,System.Int32)
+DA:42,0
+DA:43,0
+DA:44,0
+DA:45,0
+DA:46,0
+DA:48,0
+BRDA:43,14,0,0
+BRDA:43,29,0,0
+BRDA:43,44,0,0
+BRDA:43,14,1,0
+BRDA:43,29,1,0
+BRDA:43,44,1,0
+FN:7,System.Void ChessLibrary.AbstractPiece::.ctor()
+FNDA:0,System.Void ChessLibrary.AbstractPiece::.ctor()
+DA:8,0
+DA:9,0
+DA:10,0
+DA:11,0
+FN:12,System.Void ChessLibrary.AbstractPiece::.ctor(ChessLibrary.Position,System.ConsoleColor)
+FNDA:6,System.Void ChessLibrary.AbstractPiece::.ctor(ChessLibrary.Position,System.ConsoleColor)
+DA:13,6
+DA:14,6
+DA:15,6
+DA:16,6
+DA:17,6
+LF:21
+LH:8
+BRF:6
+BRH:0
+FNF:5
+FNH:2
+end_of_record
+SF:/home/coloradoorion/code/mapleton_hill/ChessRefactor/ChessLibrary/AbstractPlayer.cs
+FN:13,ChessLibrary.IPiece ChessLibrary.AbstractPlayer::TakeTurn()
+FNDA:0,ChessLibrary.IPiece ChessLibrary.AbstractPlayer::TakeTurn()
+DA:14,0
+DA:15,0
+DA:16,0
+FN:20,System.Collections.Generic.IEnumerable`1<ChessLibrary.IPiece> ChessLibrary.AbstractPlayer::get_Pieces()
+FNDA:0,System.Collections.Generic.IEnumerable`1<ChessLibrary.IPiece> ChessLibrary.AbstractPlayer::get_Pieces()
+DA:21,0
+DA:22,0
+DA:23,0
+FN:26,ChessLibrary.IPiece ChessLibrary.AbstractPlayer::GetPieceByPosition(ChessLibrary.Position)
+FNDA:0,ChessLibrary.IPiece ChessLibrary.AbstractPlayer::GetPieceByPosition(ChessLibrary.Position)
+DA:27,0
+DA:28,0
+DA:30,0
+DA:31,0
+BRDA:30,55,0,0
+BRDA:30,55,1,0
+FN:5,System.Void ChessLibrary.AbstractPlayer::.ctor()
+FNDA:0,System.Void ChessLibrary.AbstractPlayer::.ctor()
+DA:6,0
+LF:11
+LH:0
+BRF:2
+BRH:0
+FNF:4
+FNH:0
+end_of_record
+SF:/home/coloradoorion/code/mapleton_hill/ChessRefactor/ChessLibrary/King.cs
+FN:26,System.Char ChessLibrary.King::get_Icon()
+FNDA:1,System.Char ChessLibrary.King::get_Icon()
+DA:27,1
+FN:29,System.Collections.Generic.IList`1<ChessLibrary.Position> ChessLibrary.King::GetLegalMoves()
+FNDA:3,System.Collections.Generic.IList`1<ChessLibrary.Position> ChessLibrary.King::GetLegalMoves()
+DA:30,3
+DA:31,3
+DA:32,57
+DA:33,24
+DA:34,24
+DA:35,14
+DA:36,14
+DA:37,14
+DA:38,24
+DA:40,3
+DA:41,3
+BRDA:32,133,1,24
+BRDA:34,73,0,14
+BRDA:34,73,1,24
+BRDA:32,133,0,3
+FN:42,ChessLibrary.PieceTypes ChessLibrary.King::get_Type()
+FNDA:3,ChessLibrary.PieceTypes ChessLibrary.King::get_Type()
+DA:43,3
+FN:20,System.Void ChessLibrary.King::.ctor()
+FNDA:0,System.Void ChessLibrary.King::.ctor()
+DA:21,0
+FN:22,System.Void ChessLibrary.King::.ctor(ChessLibrary.Position,System.ConsoleColor)
+FNDA:6,System.Void ChessLibrary.King::.ctor(ChessLibrary.Position,System.ConsoleColor)
+DA:23,6
+DA:24,6
+DA:25,6
+FN:8,System.Void ChessLibrary.King::.cctor()
+FNDA:1,System.Void ChessLibrary.King::.cctor()
+DA:9,1
+DA:10,1
+DA:11,1
+DA:12,1
+DA:13,1
+DA:14,1
+DA:15,1
+DA:16,1
+DA:17,1
+DA:18,1
+DA:19,1
+LF:28
+LH:27
+BRF:4
+BRH:4
+FNF:6
+FNH:5
+end_of_record
+SF:/home/coloradoorion/code/mapleton_hill/ChessRefactor/ChessLibrary/PieceFactory.cs
+FN:5,ChessLibrary.IPiece ChessLibrary.PieceFactory::CreatePiece(ChessLibrary.PieceTypes,ChessLibrary.Position,System.ConsoleColor)
+FNDA:3,ChessLibrary.IPiece ChessLibrary.PieceFactory::CreatePiece(ChessLibrary.PieceTypes,ChessLibrary.Position,System.ConsoleColor)
+DA:6,3
+DA:7,3
+DA:10,3
+DA:12,0
+DA:14,3
+BRDA:7,7,1,3
+BRDA:7,7,0,0
+LF:5
+LH:4
+BRF:2
+BRH:1
+FNF:1
+FNH:1
+end_of_record
+SF:/home/coloradoorion/code/mapleton_hill/ChessRefactor/ChessLibrary/Position.cs
+FN:46,System.Boolean ChessLibrary.Position::SetPosition(System.Int32,System.Int32)
+FNDA:66,System.Boolean ChessLibrary.Position::SetPosition(System.Int32,System.Int32)
+DA:47,66
+DA:48,66
+DA:49,65
+DA:50,65
+DA:51,65
+DA:52,65
+DA:53,65
+DA:55,65
+DA:58,1
+DA:59,66
+BRDA:48,10,0,65
+BRDA:48,10,1,1
+FN:63,System.Int32 ChessLibrary.Position::get_Row()
+FNDA:109,System.Int32 ChessLibrary.Position::get_Row()
+DA:64,109
+DA:65,109
+DA:66,109
+FN:71,System.Int32 ChessLibrary.Position::get_Column()
+FNDA:109,System.Int32 ChessLibrary.Position::get_Column()
+DA:72,109
+DA:73,109
+DA:74,109
+FN:79,System.Boolean ChessLibrary.Position::get_IsValid()
+FNDA:13,System.Boolean ChessLibrary.Position::get_IsValid()
+DA:80,13
+DA:81,13
+DA:82,13
+BRDA:81,8,0,8
+BRDA:81,17,0,8
+BRDA:81,8,1,5
+BRDA:81,17,1,5
+FN:85,System.Boolean ChessLibrary.Position::IsPositionValid(System.Int32,System.Int32)
+FNDA:2960,System.Boolean ChessLibrary.Position::IsPositionValid(System.Int32,System.Int32)
+DA:86,2960
+DA:87,2960
+DA:88,2960
+BRDA:87,7,0,2263
+BRDA:87,15,0,1567
+BRDA:87,23,0,872
+BRDA:87,7,1,2088
+BRDA:87,15,1,2088
+BRDA:87,23,1,2088
+FN:90,System.Boolean ChessLibrary.Position::IsPositionValid(ChessLibrary.Position)
+FNDA:49,System.Boolean ChessLibrary.Position::IsPositionValid(ChessLibrary.Position)
+DA:91,49
+DA:92,49
+DA:93,49
+FN:95,System.Nullable`1<System.ValueTuple`2<System.Int32,System.Int32>> ChessLibrary.Position::ParseCoordinate(System.String)
+FNDA:50,System.Nullable`1<System.ValueTuple`2<System.Int32,System.Int32>> ChessLibrary.Position::ParseCoordinate(System.String)
+DA:96,50
+DA:97,50
+DA:98,1
+DA:99,1
+DA:102,49
+DA:103,47
+DA:104,47
+DA:106,47
+DA:107,46
+DA:108,46
+DA:109,46
+DA:110,46
+DA:111,46
+DA:112,44
+DA:113,44
+DA:115,2
+DA:116,2
+DA:117,3
+DA:119,5
+DA:120,50
+BRDA:97,9,0,1
+BRDA:97,9,1,49
+BRDA:102,38,0,47
+BRDA:106,63,0,47
+BRDA:106,63,1,0
+BRDA:106,84,0,46
+BRDA:108,106,0,46
+BRDA:111,122,0,45
+BRDA:111,122,1,1
+BRDA:111,143,0,44
+BRDA:111,143,1,2
+BRDA:108,106,1,2
+BRDA:106,84,1,3
+BRDA:102,38,1,5
+FN:122,System.Int32 ChessLibrary.Position::GetHashCode()
+FNDA:4,System.Int32 ChessLibrary.Position::GetHashCode()
+DA:123,4
+DA:124,4
+DA:125,4
+FN:127,System.Boolean ChessLibrary.Position::Equals(System.Object)
+FNDA:50,System.Boolean ChessLibrary.Position::Equals(System.Object)
+DA:128,50
+DA:129,50
+DA:130,50
+DA:131,50
+DA:132,50
+DA:133,50
+DA:136,0
+DA:137,50
+BRDA:129,9,0,50
+BRDA:129,9,1,0
+BRDA:129,33,0,50
+BRDA:131,48,0,26
+BRDA:131,62,0,18
+BRDA:131,48,1,32
+BRDA:131,62,1,32
+BRDA:129,33,1,0
+FN:139,System.Boolean ChessLibrary.Position::op_Equality(ChessLibrary.Position,ChessLibrary.Position)
+FNDA:2,System.Boolean ChessLibrary.Position::op_Equality(ChessLibrary.Position,ChessLibrary.Position)
+DA:140,2
+DA:143,2
+DA:144,2
+FN:146,System.Boolean ChessLibrary.Position::op_Inequality(ChessLibrary.Position,ChessLibrary.Position)
+FNDA:1,System.Boolean ChessLibrary.Position::op_Inequality(ChessLibrary.Position,ChessLibrary.Position)
+DA:147,1
+DA:148,1
+DA:149,1
+FN:151,System.String ChessLibrary.Position::ToString()
+FNDA:16,System.String ChessLibrary.Position::ToString()
+DA:152,16
+DA:153,16
+DA:154,16
+FN:162,System.Boolean ChessLibrary.Position::Move(System.Int32,System.Int32)
+FNDA:1,System.Boolean ChessLibrary.Position::Move(System.Int32,System.Int32)
+DA:163,1
+DA:164,1
+DA:165,1
+FN:23,System.Void ChessLibrary.Position::.ctor(System.Int32,System.Int32)
+FNDA:113,System.Void ChessLibrary.Position::.ctor(System.Int32,System.Int32)
+DA:24,113
+DA:25,113
+DA:27,113
+DA:29,65
+DA:30,65
+DA:31,65
+DA:32,65
+FN:33,System.Void ChessLibrary.Position::.ctor(System.String)
+FNDA:48,System.Void ChessLibrary.Position::.ctor(System.String)
+DA:34,48
+DA:35,48
+DA:36,48
+DA:37,48
+DA:38,48
+DA:39,43
+DA:40,43
+DA:41,43
+DA:42,43
+DA:43,43
+DA:44,48
+BRDA:38,53,0,43
+BRDA:38,53,1,48
+FN:14,System.Void ChessLibrary.Position::.cctor()
+FNDA:1,System.Void ChessLibrary.Position::.cctor()
+DA:15,1
+DA:16,1
+DA:21,1
+LF:89
+LH:88
+BRF:36
+BRH:33
+FNF:16
+FNH:16
+end_of_record
